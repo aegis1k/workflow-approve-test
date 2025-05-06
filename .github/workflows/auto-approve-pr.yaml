@@ -15,6 +15,6 @@ jobs:
         id: review-api-request
         run: |
           curl -X POST \
-          -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }} \
+          -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
           -d '{"commit_id": "${{ github.event.pull_request.head.sha }}", "body": "this is good", "event": "APPROVE"}' \
           https://api.github.com/repos/aegis1k/workflow-approve-test/pulls/${{ github.event.pull_request.number }}/reviews

@@ -5,7 +5,7 @@ on:
     types: [opened, synchronize]
 
 permissions:
-  pull_requests: write
+  pull-requests: write
 
 jobs:
   approve-pr:

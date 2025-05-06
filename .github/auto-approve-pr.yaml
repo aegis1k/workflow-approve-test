@@ -1,0 +1,20 @@
+name: Approve PR
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+
+permissions:
+  pull_requests: write
+
+jobs:
+  approve-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: submit-review
+        id: review-api-request
+        run: |
+          curl -x POST \ 
+          -H "Authorization: Bearer {{ secrets.GITHUB_TOKEN }} \
+          -d '{"commit_id": "", "body": "this is good", "event": "APPROVE"}' \
+          "https://api.github.com/repos/aegis1k/workflow-approve-test/pulls/{number}/reviews"

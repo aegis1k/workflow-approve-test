@@ -24,5 +24,5 @@ jobs:
         run: |
           curl -X PUT \
           -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-          -d '{"commit_title":"Merge from actions,"commit_message":"testing merge from actions"}' \
+          -d '{"commit_title":"Merge from actions","commit_message":"testing merge from actions"}' \
           https://api.github.com/repos/aegis1k/workflow-approve-test/pulls/${{ github.event.pull_request.number }}/merge

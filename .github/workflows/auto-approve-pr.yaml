@@ -18,3 +18,10 @@ jobs:
           -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
           -d '{"commit_id": "${{ github.event.pull_request.head.sha }}", "body": "this is good", "event": "APPROVE"}' \
           https://api.github.com/repos/aegis1k/workflow-approve-test/pulls/${{ github.event.pull_request.number }}/reviews
+      - name: merge
+        id: merge-api-request
+        run: |
+          curl -X POST \
+          -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          -d '{"commit_title":"Merge from actions,"commit_message":"testing merge from actions"}' \
+          https://api.github.com/repos/aegis1k/workflow-approve-test/pulls/${{ github.event.pull_request.number }}/merge
